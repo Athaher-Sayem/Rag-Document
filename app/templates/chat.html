@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Chat — Folio{% endblock %}
+
+{% block content %}
+<section class="section container">
+  <div class="chat-layout">
+    <div class="chat-main">
+      <div class="message-stream" id="stream" aria-live="polite">
+        <p class="empty" id="empty-state">
+          No messages yet. Ask a question about your indexed documents.
+        </p>
+      </div>
+      <form class="composer" id="chat-form">
+        <input type="text" id="chat-input" placeholder="Ask a question…" autocomplete="off" aria-label="Question">
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </div>
+
+    <aside class="chat-rail">
+      <h3>Scope</h3>
+      <select class="doc-select" id="doc-select" aria-label="Scope to document">
+        <option value="">All documents</option>
+        {% for d in documents %}
+        <option value="{{ d.source }}">{{ d.source }}</option>
+        {% endfor %}
+      </select>
+      <h3>Citations</h3>
+      <div class="citations" id="citations">
+        <p class="empty" style="padding:0;">Citations for the latest answer appear here.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/chat.js" defer></script>
+{% endblock %}

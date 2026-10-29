@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section container">
+  <div class="hero">
+    <div class="hero-text reveal">
+      <span class="eyebrow">Citation-grade PDF chat</span>
+      <h1 class="hero-title">Chat with your textbooks and research papers.</h1>
+      <p class="hero-sub">Ask complex questions across PDFs and get grounded answers with exact page numbers, source files, and verbatim quotes.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/chat">
+          Try the demo
+          <svg width="18" height="18" aria-hidden="true"><use href="/static/img/icons.svg#arrow"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="/documents">Upload a paper</a>
+      </div>
+      <p class="hero-stat"><strong id="hero-chunks">—</strong> chunks indexed across <strong id="hero-docs">—</strong> documents</p>
+    </div>
+
+    <div class="hero-viz reveal" aria-label="Animated retrieval and citation trace">
+      <svg viewBox="0 0 520 380" role="img" aria-hidden="true">
+        <!-- query pill -->
+        <g id="viz-query">
+          <rect x="16" y="16" width="300" height="34" rx="8" fill="#DCEDE3" stroke="#B9D4C5"/>
+          <text x="30" y="38" font-family="DM Sans, sans-serif" font-size="13" fill="#1E2B24">What is the attention mechanism?</text>
+        </g>
+
+        <!-- page cards with chunk rows -->
+        <g id="viz-pages">
+          <!-- page 1 -->
+          <g transform="translate(16,70)">
+            <rect width="140" height="120" rx="10" fill="#FFFFFF" stroke="#D5DCCB"/>
+            <text x="12" y="22" font-family="Space Grotesk, sans-serif" font-size="11" fill="#6B7A6F">paper.pdf · p.1</text>
+            <rect class="chunk" data-i="0" x="12" y="34" width="116" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="1" x="12" y="50" width="96" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="2" x="12" y="66" width="108" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="3" x="12" y="82" width="88" height="8" rx="4" fill="#DCE3D3"/>
+          </g>
+          <!-- page 3 -->
+          <g transform="translate(168,70)">
+            <rect width="140" height="120" rx="10" fill="#FFFFFF" stroke="#D5DCCB"/>
+            <text x="12" y="22" font-family="Space Grotesk, sans-serif" font-size="11" fill="#6B7A6F">paper.pdf · p.3</text>
+            <rect class="chunk" data-i="4" x="12" y="34" width="116" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="5" x="12" y="50" width="100" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="6" x="12" y="66" width="112" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="7" x="12" y="82" width="92" height="8" rx="4" fill="#DCE3D3"/>
+          </g>
+          <!-- page 7 -->
+          <g transform="translate(320,70)">
+            <rect width="184" height="120" rx="10" fill="#FFFFFF" stroke="#D5DCCB"/>
+            <text x="12" y="22" font-family="Space Grotesk, sans-serif" font-size="11" fill="#6B7A6F">review.pdf · p.7</text>
+            <rect class="chunk" data-i="8" x="12" y="34" width="160" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="9" x="12" y="50" width="140" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="10" x="12" y="66" width="156" height="8" rx="4" fill="#DCE3D3"/>
+            <rect class="chunk" data-i="11" x="12" y="82" width="128" height="8" rx="4" fill="#DCE3D3"/>
+          </g>
+        </g>
+
+        <!-- connectors -->
+        <g id="viz-links" stroke="#2F7A57" stroke-width="1.5" fill="none" stroke-linecap="round">
+          <path class="link" d="M150,150 C200,180 220,210 250,238" stroke-dasharray="120" stroke-dashoffset="120"/>
+          <path class="link" d="M300,150 C300,190 280,210 280,238" stroke-dasharray="100" stroke-dashoffset="100"/>
+          <path class="link" d="M440,150 C420,190 340,210 310,238" stroke-dasharray="140" stroke-dashoffset="140"/>
+        </g>
+
+        <!-- answer card -->
+        <g id="viz-answer">
+          <rect x="120" y="238" width="280" height="120" rx="12" fill="#E6EBE0" stroke="#B9D4C5"/>
+          <text class="ans-line" x="136" y="266" font-family="DM Sans, sans-serif" font-size="12" fill="#1E2B24" opacity="0">Attention computes weighted sums</text>
+          <text class="ans-line" x="136" y="284" font-family="DM Sans, sans-serif" font-size="12" fill="#1E2B24" opacity="0">of value vectors using query-key</text>
+          <text class="ans-line" x="136" y="302" font-family="DM Sans, sans-serif" font-size="12" fill="#1E2B24" opacity="0">similarity.</text>
+          <g class="ans-chip" opacity="0" transform="translate(136,316)">
+            <rect width="118" height="22" rx="11" fill="#DCEDE3" stroke="#B9D4C5"/>
+            <text x="10" y="15" font-family="Space Grotesk, sans-serif" font-size="11" fill="#266B4A">paper.pdf · p.3</text>
+          </g>
+          <g class="ans-chip" opacity="0" transform="translate(262,316)">
+            <rect width="128" height="22" rx="11" fill="#DCEDE3" stroke="#B9D4C5"/>
+            <text x="10" y="15" font-family="Space Grotesk, sans-serif" font-size="11" fill="#266B4A">review.pdf · p.7</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="section container">
+  <span class="eyebrow">How it works</span>
+  <h2 style="font-size:var(--text-h2); margin-top:var(--s-3);">From PDF to cited answer in three steps</h2>
+  <div class="pipeline">
+    <div class="step">
+      <svg class="ico" width="28" height="28"><use href="/static/img/icons.svg#doc"/></svg>
+      <div class="step-num">01</div>
+      <h3>Ingest</h3>
+      <p>PyMuPDF extracts per-page text and detects sections. Pages are chunked while keeping source, page, and section on every chunk.</p>
+    </div>
+    <div class="step">
+      <svg class="ico" width="28" height="28"><use href="/static/img/icons.svg#search"/></svg>
+      <div class="step-num">02</div>
+      <h3>Retrieve</h3>
+      <p>ChromaDB stores embeddings. MMR retrieval pulls diverse, relevant chunks across pages and documents for each question.</p>
+    </div>
+    <div class="step">
+      <svg class="ico" width="28" height="28"><use href="/static/img/icons.svg#cite"/></svg>
+      <div class="step-num">03</div>
+      <h3>Cite</h3>
+      <p>The model answers only from retrieved context, tagging each claim with its source and page. Quotes are verbatim spans.</p>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities" class="section container">
+  <span class="eyebrow">Capabilities</span>
+  <h2 style="font-size:var(--text-h2); margin-top:var(--s-3);">Built for academic verification</h2>
+  <div class="capabilities">
+    <div class="cap-row">
+      <svg class="ico" width="24" height="24"><use href="/static/img/icons.svg#doc"/></svg>
+      <h3>Section-aware chunking</h3>
+      <p>Chunks carry section, page, and source so citations point to the exact location in the original PDF.</p>
+    </div>
+    <div class="cap-row">
+      <svg class="ico" width="24" height="24"><use href="/static/img/icons.svg#db"/></svg>
+      <h3>Page-number citations</h3>
+      <p>Every claim cites a filename and page, with the verbatim quote shown alongside it for verification.</p>
+    </div>
+    <div class="cap-row">
+      <svg class="ico" width="24" height="24"><use href="/static/img/icons.svg#chat"/></svg>
+      <h3>Conversation memory</h3>
+      <p>Follow-up questions are rewritten into standalone queries using prior turns, so retrieval stays accurate.</p>
+    </div>
+    <div class="cap-row">
+      <svg class="ico" width="24" height="24"><use href="/static/img/icons.svg#spark"/></svg>
+      <h3>Grounded answers</h3>
+      <p>The model answers strictly from context and says when it does not know, rather than inventing sources.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <span class="eyebrow">Live index</span>
+  <h2 style="font-size:var(--text-h2); margin-top:var(--s-3);">What is in your library right now</h2>
+  <div class="metrics" id="metrics">
+    <div class="metric"><div class="metric-value" data-count="chunks">0</div><div class="metric-label">Chunks indexed</div></div>
+    <div class="metric"><div class="metric-value" data-count="pages">0</div><div class="metric-label">Pages covered</div></div>
+    <div class="metric"><div class="metric-value" data-count="documents">0</div><div class="metric-label">Documents</div></div>
+    <div class="metric"><div class="metric-value" data-count="avg">0</div><div class="metric-label">Avg chunks / doc</div></div>
+  </div>
+</section>
+
+<section id="demo" class="section container">
+  <span class="eyebrow">Try it</span>
+  <h2 style="font-size:var(--text-h2); margin-top:var(--s-3);">Ask a question against the sample paper</h2>
+  <div class="demo">
+    <div class="demo-head">
+      <svg width="20" height="20" aria-hidden="true" style="color:var(--accent)"><use href="/static/img/icons.svg#chat"/></svg>
+      <strong style="font-family:var(--font-display); font-size:0.9375rem;">Live demo</strong>
+      <span class="chip" id="demo-source">sample paper</span>
+    </div>
+    <div class="demo-body" id="demo-body">
+      <p class="empty">Ask something like “summarize the main contribution” to see a streamed answer with citations.</p>
+    </div>
+    <form class="demo-form" id="demo-form">
+      <input type="text" id="demo-input" placeholder="Ask a question…" autocomplete="off" aria-label="Demo question">
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/landing.js" defer></script>
+{% endblock %}

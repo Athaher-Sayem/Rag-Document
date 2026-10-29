@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+.venv/
+
+# Secrets & local config
+.env
+
+# Local data (PDFs, vector index)
+data/chroma/
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Logs
+*.log

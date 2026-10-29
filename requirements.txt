@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+pydantic
+pydantic-settings
+python-dotenv
+langchain
+langchain-core
+langchain-openai
+langchain-anthropic
+langchain-community
+langchain-chroma
+chromadb
+pymupdf
+pytest
+httpx

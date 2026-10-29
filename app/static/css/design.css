@@ -1,0 +1,116 @@
+/* design.css — tokens, fonts, primitives.
+   Sage/forest/emerald system. Whisper commitment: sage surface, emerald accent.
+   60% sage surface / 30% forest text+structure / 10% emerald accent.
+*/
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/space-grotesk-latin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/space-grotesk-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/space-grotesk-latin-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/static/fonts/dm-sans-latin-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/static/fonts/dm-sans-latin-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/static/fonts/dm-sans-latin-700.woff2") format("woff2");
+}
+
+:root {
+  /* Surfaces — sage family */
+  --surface-0: #eff3ec;
+  --surface-1: #e6ebe0;
+  --surface-2: #dce3d3;
+  --surface-inset: #e2e7db;
+
+  /* Text — forest-green family */
+  --text-primary: #1e2b24;
+  --text-secondary: #4a5a50;
+  --text-tertiary: #6b7a6f;
+  --text-on-accent: #ffffff;
+
+  /* Accent — emerald family */
+  --accent: #2f7a57;
+  --accent-hover: #266b4a;
+  --accent-soft: #dcede3;
+  --accent-border: #b9d4c5;
+
+  /* Borders — subtle sage-tinted hairlines */
+  --border-subtle: #d5dccb;
+  --border-strong: #b8c2ac;
+
+  /* Shadows — restrained forest-green cast */
+  --shadow-sm: 0 1px 2px rgba(30, 43, 36, 0.04);
+  --shadow-md: 0 2px 8px rgba(30, 43, 36, 0.06);
+  --shadow-lg: 0 8px 24px rgba(30, 43, 36, 0.08);
+
+  /* State — muted, palette-consistent */
+  --success: #2f7a57;
+  --warning: #b5853b;
+  --danger: #a84a3f;
+
+  /* Type */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --text-display: 3.25rem / 1.05;
+  --text-h1: 2.25rem / 1.1;
+  --text-h2: 1.75rem / 1.15;
+  --text-h3: 1.25rem / 1.3;
+  --text-body: 1.0625rem / 1.6;
+  --text-small: 0.9375rem / 1.5;
+  --text-caption: 0.8125rem / 1.4;
+  --text-metric: 2.75rem / 1;
+  --measure: 68ch;
+
+  /* Spacing — 1-4-9 rhythm on a 4px base */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-9: 36px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-24: 96px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container: 1200px;
+  --nav-h: 64px;
+}

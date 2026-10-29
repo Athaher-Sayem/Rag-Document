@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Library — Folio{% endblock %}
+
+{% block content %}
+<section class="section container">
+  <span class="eyebrow">Library</span>
+  <h1 style="font-size:var(--text-h1); margin-top:var(--s-3);">Your indexed documents</h1>
+
+  <div class="upload-zone" id="upload-zone" style="margin-top:var(--s-6);">
+    <svg width="32" height="32" aria-hidden="true" style="color:var(--accent); margin-bottom:var(--s-3);"><use href="/static/img/icons.svg#upload"/></svg>
+    <p>Drop PDFs here, or <label for="file-input" style="color:var(--accent); text-decoration:underline; cursor:pointer;">browse</label></p>
+    <p style="font-size:var(--text-caption); color:var(--text-tertiary); margin-top:var(--s-2);">PDFs are chunked by section and page, then embedded into ChromaDB.</p>
+    <input type="file" id="file-input" accept="application/pdf" multiple hidden>
+  </div>
+
+  <table class="doc-table">
+    <thead>
+      <tr>
+        <th>Document</th>
+        <th>Pages</th>
+        <th>Chunks</th>
+        <th>Page range</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="doc-tbody">
+      {% for d in documents %}
+      <tr data-source="{{ d.source }}">
+        <td>{{ d.source }}</td>
+        <td>{{ d.page_count }}</td>
+        <td>{{ d.chunks }}</td>
+        <td>{{ d.page_range }}</td>
+        <td><button class="del" data-source="{{ d.source }}" type="button">Remove</button></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="empty">No documents indexed yet. Upload a PDF to begin.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/upload.js" defer></script>
+{% endblock %}

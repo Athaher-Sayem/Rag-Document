@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Chat with your textbooks and research papers. Local PDF RAG with exact page-level citations.">
+  <title>{% block title %}Folio — chat with your papers{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/design.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="nav-brand" href="/">
+        <span class="mark" aria-hidden="true"></span>
+        Folio
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#how">How it works</a>
+        <a href="/#capabilities">Capabilities</a>
+        <a href="/#demo">Demo</a>
+        <a href="/documents">Library</a>
+      </nav>
+      <a class="btn btn-primary" href="/chat">Open chat</a>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Built with FastAPI, LangChain, ChromaDB.</span>
+      <span class="chip">Self-hosted · citations verified</span>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
